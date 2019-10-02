@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <div>
-      
+      <Nav />
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/Search" component={Search} />

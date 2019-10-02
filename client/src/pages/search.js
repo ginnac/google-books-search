@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import Jumbotron from "../components/jumbotron";
+import { Input, SearchBtn } from "../components/searchBox";
+import { Container, Box } from "../components/grid";
 
 class Search extends Component {
   state = {
@@ -50,9 +53,26 @@ class Search extends Component {
 
   render() {
     return (
-    <div>
-        <p>Hello!!!</p>
-    </div>
+      <Container fluid>
+     <Jumbotron>
+      <h1>(React) Google Book Search</h1>
+      <p>Search for and Save Books of your Interest</p>
+     </Jumbotron>
+     <Box>
+     <h4>Book Search</h4>
+       <p>Title:</p>
+     <Input></Input>
+     <SearchBtn>
+       Search
+     </SearchBtn>
+     </Box>
+
+
+     <Box>
+     <h4>Results</h4>
+     </Box>
+
+     </Container>
     );
   }
 }
