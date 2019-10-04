@@ -40,13 +40,8 @@ class Saved extends Component {
       <p>Search for and Save Books of your Interest</p>
      </Jumbotron>
 
-
-     <Box>
-     <h4>Saved Books</h4>
-     </Box>
-
       <BoxOne>
-      <h4>Saved</h4>
+      <h4>Saved Books</h4>
      {this.state.books.map(book => (
             <SavedCards
               id={book._id}

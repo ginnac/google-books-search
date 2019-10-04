@@ -5,23 +5,9 @@ import "../styles/resultsCard.css";
 
 
 //add props to display the cards dynamically....
-function Cards(props, {children}) {
+function ViewCards(props, {children}) {
 
   const style={
-    border:{
-        borderStyle: "solid",
-        borderColor: "lavender",
-        paddingRight:20,
-        paddingLeft:20,
-        paddingTop:20,
-        paddingBottom:20,
-        marginBottom:20
-    },
-    
-    divStyle:{
-          
-        backgroundImage: `url(${props.image})`,
-    },   
 
     div:{
         float:"left",
@@ -55,12 +41,12 @@ function Cards(props, {children}) {
             {children}
             <div style={style.div}>
             <div><h5>{props.bookTitle}</h5></div>
-            <div>Written by: {props.authors}</div>
+            
             </div>
             
             <div style={style.divOne}>
                 
-                <button onClick={() => props.saveABook(bookQuery)} >Save</button>
+            <button onClick={() => props.saveABook(bookQuery)} >Save</button>
                 
             </div>
 
@@ -89,4 +75,4 @@ function Cards(props, {children}) {
   );
 }
 
-export default Cards;
+export default ViewCards;

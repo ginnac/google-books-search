@@ -3,4 +3,14 @@
     clear: both;
   }
 
-.clear{clear: both; display: block;  position: relative; } 
+.clear{clear: both; float:left; display: block;  position: relative; }
+
+.theContainer{
+  flex-wrap: wrap;
+  margin-top:15px;
+}
+
+.rightBox{
+  justify-content:flex-end;
+  align-content: flex-end;
+}

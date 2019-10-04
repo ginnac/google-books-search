@@ -5,7 +5,7 @@ import "../styles/resultsCard.css";
 
 
 //add props to display the cards dynamically....
-function Cards(props, {children}) {
+function Cards(props) {
 
   const style={
     border:{
@@ -17,11 +17,6 @@ function Cards(props, {children}) {
         paddingBottom:20,
         marginBottom:20
     },
-    
-    divStyle:{
-          
-        backgroundImage: `url(${props.image})`,
-    },   
 
     div:{
         float:"left",
@@ -29,20 +24,18 @@ function Cards(props, {children}) {
     divOne:{
         float:"right"
     },
-    divTwo:{
-        clear:"both"
+    pic:{
+        marginRight: 8
     }
   }
 
-  let bookQuery ={
 
+  let bookQuery ={
     title: `${props.bookTitle}`,
     authors: `${props.authors}`,
     description: `${props.description}`,
     image: `${props.image}`,
     link: `${props.link}`,
-
-
   }
 
   
@@ -52,37 +45,42 @@ function Cards(props, {children}) {
 
 
         <div style={style.border}> 
-            {children}
-            <div style={style.div}>
-            <div><h5>{props.bookTitle}</h5></div>
-            <div>Written by: {props.authors}</div>
+          <div className="row">
+
+            <div className="col-6">
+                <div><h5>{props.bookTitle}</h5></div>
+                <div>Written by: {props.authors}</div>
             </div>
             
-            <div style={style.divOne}>
+            <div className="col-6 d-flex align-items-end flex-column">
+            <div>
                 <button><a href={`/Book/${props.id}`}> View </a> </button>
                 <button onClick={() => props.saveABook(bookQuery)} >Save</button>
                 
             </div>
+            </div>
 
 
+          </div>
+          
 
-            <div></div>
+           
 
-            <div>
-
-            
+            <div className="theContainer">
 
             <div className="clear">
-             <img style={style.div} src={props.image} alt="book"/>
+            <img style={style.pic} src={props.image} alt="book"/>
             </div>
-            <div style={style.div} >{props.description}</div>
+
+            <div className="clearfix">
+            <div >{props.description}</div>  
+            </div>
             
             </div>
 
                
-            <div className="clearfix"></div>
+           
             
-            <div>{children}</div> 
         </div>
         
 
