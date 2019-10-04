@@ -1,47 +1,36 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/jumbotron";
-import { Input, SearchBtn } from "../components/searchBox";
-import { Container, Box } from "../components/grid";
+import { Container, Box, BoxOne } from "../components/grid";
+import SavedCards from "../components/savedCard"
 
 class Saved extends Component {
   state = {
     books: [],
-    title: "",
-    author: "",
-    description: ""
   };
 
   componentDidMount() {
-    // this.savedBooks();
+    this.loadSavedBooks();
   }
 
+  loadSavedBooks = () => {
+    API.getBooks()
+      .then(res => {
+        this.setState({ books: res.data});
+        console.log(this.state.books);
+      })
+      .catch(err => console.log(err));
+  };
 
-//   deleteBook = id => {
-//     API.deleteBook(id)
-//       .then(res => this.loadBooks())
-//       .catch(err => console.log(err));
-//   };
+    
+    deleteABook = id => {
+      API.deleteBook(id)
+      .then(res => {console.log(res);
+        this.loadSavedBooks()})
+      .catch(err => console.log(err));
+  };
 
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
 
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     if (this.state.title && this.state.author) {
-//       API.saveBook({
-//         title: this.state.title,
-//         author: this.state.author,
-//         synopsis: this.state.synopsis
-//       })
-//         .then(res => this.loadBooks())
-//         .catch(err => console.log(err));
-//     }
-//   };
 
   render() {
     return (
@@ -56,6 +45,22 @@ class Saved extends Component {
      <h4>Saved Books</h4>
      </Box>
 
+      <BoxOne>
+      <h4>Saved</h4>
+     {this.state.books.map(book => (
+            <SavedCards
+              id={book._id}
+              key={book._id} 
+              title ={book.title}
+              deleteABook = {this.deleteABook}
+              authors = {book.authors[0]}
+              image = {book.image}
+              link ={book.link}
+              description = {book.description}
+             />
+     ))}
+
+      </BoxOne>
      </Container>
     );
   }

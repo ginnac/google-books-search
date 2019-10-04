@@ -25,11 +25,7 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
-//   deleteBook = id => {
-//     API.deleteBook(id)
-//       .then(res => this.loadBooks())
-//       .catch(err => console.log(err));
-//   };
+
 
   handleInputChange = event => {
     const { name, value } = event.target;

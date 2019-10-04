@@ -5,7 +5,7 @@ import "../styles/resultsCard.css";
 
 
 //add props to display the cards dynamically....
-function Cards(props) {
+function SavedCards(props) {
 
   const style={
     border:{
@@ -16,12 +16,7 @@ function Cards(props) {
         paddingTop:20,
         paddingBottom:20,
         marginBottom:20
-    },
-    
-    divStyle:{
-          
-        backgroundImage: `url(${props.image})`,
-    },   
+    }, 
 
     div:{
         float:"left",
@@ -34,17 +29,6 @@ function Cards(props) {
     }
   }
 
-  let bookQuery ={
-
-    title: `${props.bookTitle}`,
-    authors: `${props.authors}`,
-    description: `${props.description}`,
-    image: `${props.image}`,
-    link: `${props.link}`,
-
-
-  }
-
   
 
    
@@ -54,13 +38,13 @@ function Cards(props) {
         <div style={style.border}> 
 
             <div style={style.div}>
-            <div><h5>{props.bookTitle}</h5></div>
+            <div><h5>{props.title}</h5></div>
             <div>Written by: {props.authors}</div>
             </div>
             
             <div style={style.divOne}>
                 <button >View</button>
-                <button onClick={() => props.saveABook(bookQuery)} >Save</button>
+                <button onClick={() => props.deleteABook(props.id)} >Delete</button>
                 
             </div>
 
@@ -89,4 +73,4 @@ function Cards(props) {
   );
 }
 
-export default Cards;
+export default SavedCards;
