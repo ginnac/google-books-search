@@ -48,12 +48,13 @@ class Saved extends Component {
      </Jumbotron>
 
       <BoxOne>
-      <h4>Saved Books</h4>
+      <h4 className="mb-4">Saved Books</h4>
      {this.state.books.map(book => (
             <SavedCards
               id={book._id}
               key={book._id} 
               title ={book.title}
+              bookId = {book.bookId}
               deleteABook = {this.deleteABook}
               authors = {book.authors[0]}
               image = {book.image}

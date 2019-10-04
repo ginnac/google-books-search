@@ -26,6 +26,11 @@ a{
 
 .colorbtn{
   margin-left: 3px;
+
+}
+
+button{
+  margin-bottom: 3px;
 }
 
 
@@ -34,4 +39,12 @@ a{
   
     border-color: #17a2b8;
     border-width: 1px; }
+
+
+    @media only screen and (max-width: 378px) {
+      .colorbtn{
+        margin-left: 0px;
+      
+      }
+    }
 

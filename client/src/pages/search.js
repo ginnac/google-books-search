@@ -86,7 +86,7 @@ class Search extends Component {
               key={book.id}
               saveABook = {this.saveABook}
               bookTitle={book.volumeInfo.title}
-              authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(", "): book.volumeInfo.authors}
+              authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(", "): "No Available Author"}
               image={book.volumeInfo.imageLinks.thumbnail}
               description={book.volumeInfo.description}
               link={book.volumeInfo.infoLink}/>

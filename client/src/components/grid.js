@@ -19,7 +19,8 @@ const style={
         paddingRight:20,
         paddingLeft:20,
         paddingTop:20,
-        marginBottom:20,
+        marginBottom:100,
+
     
         }
 

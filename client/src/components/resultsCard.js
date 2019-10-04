@@ -28,7 +28,12 @@ function Cards(props) {
         marginRight: 8
     },
     textsize:{
-        fontSize: 22
+        fontSize: 22,
+        
+    },
+    textsizeAuthor:{
+        fontSize: 20,
+        
     }
   }
 
@@ -53,7 +58,7 @@ function Cards(props) {
 
             <div className="col-6">
                 <div><h5 style={style.textsize} >{props.bookTitle}</h5></div>
-                <div style={style.textsize}>Written by: {props.authors}</div>
+                <div style={style.textsizeAuthor}>Written by: {props.authors}</div>
             </div>
             
             <div className="col-6 d-flex align-items-end flex-column">
