@@ -4,17 +4,18 @@ import React from "react";
 const style={
     borderStyle:{
     borderStyle: "solid",
-    borderColor: "lavender",
-    height:300,
+    borderColor: "#17a2b8",
+    height:250,
     paddingRight:20,
     paddingLeft:20,
     paddingTop:20,
     marginBottom:20,
 
     },
+    
     borderStyleOne:{
         borderStyle: "solid",
-        borderColor: "lavender",
+        borderColor: "#17a2b8",
         paddingRight:20,
         paddingLeft:20,
         paddingTop:20,

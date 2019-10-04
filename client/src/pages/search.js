@@ -4,11 +4,15 @@ import Jumbotron from "../components/jumbotron";
 import { Input, SearchBtn } from "../components/searchBox";
 import { Container, Box, BoxOne } from "../components/grid";
 import Cards from "../components/resultsCard"
+import Nav from "../components/navbar";
+
 
 class Search extends Component {
   state = {
     books: [],
-    title: ""
+    title: "",
+    search: true,
+    saved: false
   };
 
   componentDidMount() {
@@ -19,12 +23,11 @@ class Search extends Component {
     API.getGoogleBooks(this.state.title)
       .then(res => {
         console.log(res.data.items);
-        this.setState({ books: res.data.items, title: "" });
+        this.setState({books:res.data.items, title: "" });
         console.log(this.state.books);
       })
       .catch(err => console.log(err));
   };
-
 
 
   handleInputChange = event => {
@@ -37,7 +40,6 @@ class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
     this.loadBooks(this.state.title);
    
   };
@@ -50,13 +52,17 @@ class Search extends Component {
 
   render() {
     return (
+      <div>
+      <Nav
+      search = {this.state.search} 
+      saved = {this.state.saved}/>
       <Container fluid>
      <Jumbotron>
       <h1>(React) Google Book Search</h1>
       <p>Search for and Save Books of your Interest</p>
      </Jumbotron>
      <Box>
-     <h4>Book Search</h4>
+     <h4 className="mb-4" >Book Search</h4>
        <p>Title:</p>
      <Input
        value={this.state.title}
@@ -72,20 +78,21 @@ class Search extends Component {
 
 
      <BoxOne>
-     <h4>Results</h4>
+     <h4 className="mb-4"> Results</h4>
      {this.state.books.map(book => (
+
             <Cards
               id={book.id}
               key={book.id}
               saveABook = {this.saveABook}
               bookTitle={book.volumeInfo.title}
-              authors={book.volumeInfo.authors}
+              authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(", "): book.volumeInfo.authors}
               image={book.volumeInfo.imageLinks.thumbnail}
               description={book.volumeInfo.description}
               link={book.volumeInfo.infoLink}/>
 
 
-     ))}
+     ))};
 
 
 
@@ -93,6 +100,8 @@ class Search extends Component {
      </BoxOne>
 
      </Container>
+      </div>
+     
     );
   }
 }

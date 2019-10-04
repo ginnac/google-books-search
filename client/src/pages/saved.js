@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/jumbotron";
-import { Container, Box, BoxOne } from "../components/grid";
+import { Container, BoxOne } from "../components/grid";
 import SavedCards from "../components/savedCard"
+import Nav from "../components/navbar"
 
 class Saved extends Component {
   state = {
     books: [],
+    search: false,
+    saved: true
   };
 
   componentDidMount() {
@@ -34,6 +37,10 @@ class Saved extends Component {
 
   render() {
     return (
+      <div>
+      <Nav 
+       search = {this.state.search} 
+       saved = {this.state.saved}/>
       <Container fluid>
      <Jumbotron>
       <h1>(React) Google Book Search</h1>
@@ -57,6 +64,7 @@ class Saved extends Component {
 
       </BoxOne>
      </Container>
+     </div>
     );
   }
 }

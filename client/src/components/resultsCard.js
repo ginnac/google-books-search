@@ -26,11 +26,15 @@ function Cards(props) {
     },
     pic:{
         marginRight: 8
+    },
+    textsize:{
+        fontSize: 22
     }
   }
 
 
   let bookQuery ={
+    bookId: `${props.id}`,  
     title: `${props.bookTitle}`,
     authors: `${props.authors}`,
     description: `${props.description}`,
@@ -48,14 +52,14 @@ function Cards(props) {
           <div className="row">
 
             <div className="col-6">
-                <div><h5>{props.bookTitle}</h5></div>
-                <div>Written by: {props.authors}</div>
+                <div><h5 style={style.textsize} >{props.bookTitle}</h5></div>
+                <div style={style.textsize}>Written by: {props.authors}</div>
             </div>
             
             <div className="col-6 d-flex align-items-end flex-column">
             <div>
-                <button><a href={`/Book/${props.id}`}> View </a> </button>
-                <button onClick={() => props.saveABook(bookQuery)} >Save</button>
+                <button className="btn btn-dark"><a href={`/Book/${props.id}`}> View </a> </button>
+                <button className="btn btn-dark colorbtn" onClick={() => props.saveABook(bookQuery)} >Save</button>
                 
             </div>
             </div>

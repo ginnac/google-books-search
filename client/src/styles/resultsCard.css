@@ -14,3 +14,24 @@
   justify-content:flex-end;
   align-content: flex-end;
 }
+
+a{
+  text-decoration: none !important;
+  color:white;
+}
+
+.colorbtn:hover{
+  color: blue;
+}
+
+.colorbtn{
+  margin-left: 3px;
+}
+
+
+
+  .ff{
+  
+    border-color: #17a2b8;
+    border-width: 1px; }
+

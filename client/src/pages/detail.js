@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/jumbotron";
-import { Container, Box, BoxOne } from "../components/grid";
+import { Container, BoxOne } from "../components/grid";
 import ViewCards from "../components/viewCard"
+import Nav from "../components/navbar"
 
 class Detail extends Component {
   state = {
@@ -39,6 +40,8 @@ class Detail extends Component {
 
   render() {
     return (
+      <div>
+      <Nav />
       <Container fluid>
      <Jumbotron>
       <h1>(React) Google Book Search</h1>
@@ -74,6 +77,7 @@ class Detail extends Component {
      </BoxOne>
 
      </Container>
+     </div>
     );
   }
 }
