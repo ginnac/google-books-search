@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/jumbotron";
 import { Input, SearchBtn } from "../components/searchBox";
-import { Container, Box } from "../components/grid";
+import { Container, Box, BoxOne } from "../components/grid";
+import Cards from "../components/resultsCard"
 
 class Search extends Component {
   state = {
     books: [],
-    title: "",
-    author: "",
-    description: ""
+    title: ""
   };
 
   componentDidMount() {
@@ -17,10 +16,11 @@ class Search extends Component {
   }
 
   loadBooks = () => {
-    API.searchBooks("The Hunger Games")
+    API.getGoogleBooks(this.state.title)
       .then(res => {
-        console.log(res.data);
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        console.log(res.data.items);
+        this.setState({ books: res.data.items, title: "" });
+        console.log(this.state.books);
       })
       .catch(err => console.log(err));
   };
@@ -31,25 +31,26 @@ class Search extends Component {
 //       .catch(err => console.log(err));
 //   };
 
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.title)
+  };
 
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     if (this.state.title && this.state.author) {
-//       API.saveBook({
-//         title: this.state.title,
-//         author: this.state.author,
-//         synopsis: this.state.synopsis
-//       })
-//         .then(res => this.loadBooks())
-//         .catch(err => console.log(err));
-//     }
-//   };
+  handleSubmit = event => {
+    event.preventDefault();
+    
+    this.loadBooks(this.state.title);
+   
+  };
+
+  saveABook = (bookQuery) => {
+      API.saveBook(bookQuery)
+        .then(res => {console.log(res); this.loadBooks()})
+        .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -61,16 +62,34 @@ class Search extends Component {
      <Box>
      <h4>Book Search</h4>
        <p>Title:</p>
-     <Input></Input>
-     <SearchBtn>
+     <Input
+       value={this.state.title}
+       onChange={this.handleInputChange}
+       name="title"
+       placeholder="Title">
+       </Input>
+     <SearchBtn
+     onClick={this.handleSubmit}>
        Search
      </SearchBtn>
      </Box>
 
 
-     <Box>
+     <BoxOne>
      <h4>Results</h4>
-     </Box>
+     {this.state.books.map(book => (
+            <Cards
+              id={book.id}
+              key={book.id}
+              saveABook = {this.saveABook}
+              bookTitle={book.volumeInfo.title}
+              authors={book.volumeInfo.authors}
+              image={book.volumeInfo.imageLinks.thumbnail}
+              description={book.volumeInfo.description}
+              link={book.volumeInfo.infoLink}
+             />
+     ))}
+     </BoxOne>
 
      </Container>
     );

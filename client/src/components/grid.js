@@ -11,7 +11,16 @@ const style={
     paddingTop:20,
     marginBottom:20,
 
-    }
+    },
+    borderStyleOne:{
+        borderStyle: "solid",
+        borderColor: "lavender",
+        paddingRight:20,
+        paddingLeft:20,
+        paddingTop:20,
+        marginBottom:20,
+    
+        }
 
 }
 // This Container component allows us to use a bootstrap container without worrying about class names
@@ -21,6 +30,12 @@ export function Container({ fluid, children }) {
 
 export function Box ({children}){
     return <div style={style.borderStyle}>
+    
+    {children}</div>
+}
+
+export function BoxOne ({children}){
+    return <div style={style.borderStyleOne}>
     
     {children}</div>
 }
