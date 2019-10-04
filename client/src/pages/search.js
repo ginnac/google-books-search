@@ -82,9 +82,14 @@ class Search extends Component {
               authors={book.volumeInfo.authors}
               image={book.volumeInfo.imageLinks.thumbnail}
               description={book.volumeInfo.description}
-              link={book.volumeInfo.infoLink}
-             />
+              link={book.volumeInfo.infoLink}/>
+
+
      ))}
+
+
+
+     
      </BoxOne>
 
      </Container>

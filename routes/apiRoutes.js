@@ -14,6 +14,16 @@ router.get("/googlebooks", (req, res) => {
   });
 
 
+  router.get("/googlebook/:id", (req, res) => {
+    var id = req.params.id
+    var url="https://www.googleapis.com/books/v1/volumes/" + id;
+  
+      axios.get(url)
+        .then (({data}) => {res.json(data); console.log(url)})
+        .catch(err => {console.log(err);res.status(422).json(err)});
+    });
+
+
 // Matches with "/api/books"
 router.route("/books")
   .get(bookController.findAll)

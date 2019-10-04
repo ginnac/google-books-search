@@ -59,7 +59,7 @@ function Cards(props, {children}) {
             </div>
             
             <div style={style.divOne}>
-                <button><a href={`/Book/${props.id}`}> View </a> </button>
+                
                 <button onClick={() => props.saveABook(bookQuery)} >Save</button>
                 
             </div>
@@ -79,10 +79,8 @@ function Cards(props, {children}) {
             
             </div>
 
-               
             <div className="clearfix"></div>
             
-            <div>{children}</div> 
         </div>
         
 

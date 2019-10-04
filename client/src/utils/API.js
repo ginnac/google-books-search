@@ -6,6 +6,12 @@ export default {
     return axios.get("api/googlebooks", {params:{q:query}});
   },
 
+   // Gets books from the google books API
+   getGoogleBookById: function(id){
+    return axios.get("/api/googlebook/" + id);
+  },
+  
+
   // Gets the book with the given id
   bookDetail: function(id) {
     return axios.get("/api/books/" + id);
