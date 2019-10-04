@@ -8,6 +8,15 @@ import "../styles/resultsCard.css";
 function ViewCards(props, {children}) {
 
   const style={
+    border:{
+        borderStyle: "solid",
+        borderColor: "lavender",
+        paddingRight:20,
+        paddingLeft:20,
+        paddingTop:20,
+        paddingBottom:20,
+        marginBottom:20
+    },
 
     div:{
         float:"left",
@@ -15,20 +24,27 @@ function ViewCards(props, {children}) {
     divOne:{
         float:"right"
     },
-    divTwo:{
-        clear:"both"
+    pic:{
+        marginRight: 8
+    },
+    textsize:{
+        fontSize: 22,
+        
+    },
+    textsizeAuthor:{
+        fontSize: 20,
+        
     }
   }
 
-  let bookQuery ={
 
+  let bookQuery ={
+    bookId: `${props.id}`,  
     title: `${props.bookTitle}`,
     authors: `${props.authors}`,
     description: `${props.description}`,
     image: `${props.image}`,
     link: `${props.link}`,
-
-
   }
 
   
@@ -38,34 +54,47 @@ function ViewCards(props, {children}) {
 
 
         <div style={style.border}> 
-            {children}
-            <div style={style.div}>
-            <div><h5>{props.bookTitle}</h5></div>
-            
+          <div className="row">
+
+            <div className="col-6">
+                <div><h5 style={style.textsize} >{props.bookTitle}</h5></div>
+                <div style={style.textsizeAuthor}>Written by: {props.authors}</div>
             </div>
             
-            <div style={style.divOne}>
-                
-            <button onClick={() => props.saveABook(bookQuery)} >Save</button>
-                
-            </div>
-
-
-
-            <div></div>
-
+            <div className="col-6 d-flex align-items-end flex-column">
             <div>
-
             
+                <button className="btn btn-dark colorbtn" onClick={() => props.saveABook(bookQuery)} >Save</button>
+                
+            </div>
+            </div>
+
+
+          </div>
+          
+          <div className="theContainer">
+            <div>Pages: {props.pages}</div>
+            <div>Published by: {props.publisher}</div>
+            <div>Published on: {props.published}</div>
+            
+          </div>
+
+           
+
+            <div className="theContainer">
 
             <div className="clear">
-             <img style={style.div} src={props.image} alt="book"/>
+            <img style={style.pic} src={props.image} alt="book"/>
             </div>
-            <div style={style.div} >{props.description}</div>
+
+            <div className="clearfix">
+            <div >{props.description}</div>  
+            </div>
             
             </div>
 
-            <div className="clearfix"></div>
+               
+           
             
         </div>
         

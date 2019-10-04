@@ -50,19 +50,14 @@ class Detail extends Component {
 
 
      <BoxOne>
-     <h4>Book Details</h4>
-
-     <span>Written by: </span>
-     {this.state.authors.map(author => (
-          <span>{author}  </span>
-     ))}
+     <h4 className="mb-4">Book Details</h4>
           
             <ViewCards
             id={this.state.book.id}
             key={this.state.book.id}
             saveABook = {this.saveABook}
             bookTitle={this.state.volumeInfo.title}
-            authors={this.state.volumeInfo.authors}
+            authors={this.state.volumeInfo.authors ? this.state.volumeInfo.authors.join(", "): "No Available Author"}
             image={this.state.imageGallery.thumbnail}
             description={this.state.volumeInfo.description}
             link={this.state.volumeInfo.infoLink}
