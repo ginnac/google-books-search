@@ -10,7 +10,7 @@ import Nav from "../components/navbar";
 class Search extends Component {
   state = {
     books: [],
-    title: "",
+    title: "Harry potter",
     search: true,
     saved: false
   };
@@ -92,7 +92,7 @@ class Search extends Component {
               link={book.volumeInfo.infoLink}/>
 
 
-     ))};
+     ))}
 
 
 

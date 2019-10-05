@@ -2,12 +2,6 @@ import React from "react";
 
 function Jumbotron({ children }) {
 
-  const style={
-    
-
-    divStyle:{}   
-}
-
 
   return (
     <div
