@@ -5,6 +5,7 @@ import { Input, SearchBtn } from "../components/searchBox";
 import { Container, Box, BoxOne } from "../components/grid";
 import Cards from "../components/resultsCard"
 import Nav from "../components/navbar";
+import "../styles/resultsCard.css";
 
 
 class Search extends Component {
@@ -96,7 +97,7 @@ class Search extends Component {
 
 
 
-     
+      <p className="text-right"><a  href="https://github.com/ginnac/google-books-search"> <p className="atag">Find GitHub Repository Here</p></a></p>
      </BoxOne>
 
      </Container>
