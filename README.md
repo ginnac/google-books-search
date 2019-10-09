@@ -1,4 +1,4 @@
-### React Google Book Searcher
+## React Google Book Searcher
 This Application allows the user to find book's information (from authors's to a brief description, etc). The information comes from google books API. 
 
 ### Deployment (Heroku)
